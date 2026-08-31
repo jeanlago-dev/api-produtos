@@ -1,0 +1,27 @@
+{
+  "name": "api-produtos",
+  "version": "0.1.0",
+  "description": "API REST educacional para produtos de tecnologia",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "test": "echo \"No tests configured yet\""
+  },
+  "keywords": [
+    "node",
+    "typescript",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
