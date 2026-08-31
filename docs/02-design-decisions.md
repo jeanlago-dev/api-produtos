@@ -73,3 +73,27 @@ Estrutura adequada ao curso, fácil de entender, testar e evoluir.
 ### Trade-offs
 - **Pró**: clareza estrutural com baixa complexidade.
 - **Contra**: pode exigir refatorações futuras se o projeto crescer muito.
+
+---
+
+## ADR-004 — Bootstrap inicial sem frameworks externos
+
+### Contexto
+A Sessão 0.1 tem objetivo de fundação do projeto Node.js + TypeScript, sem avanço para camadas HTTP e persistência.
+
+### Problema
+Adicionar Express e outras dependências já no bootstrap aumentaria complexidade antes da base de compilação e scripts estar estável.
+
+### Alternativas consideradas
+- iniciar já com Express e estrutura completa de servidor;
+- iniciar apenas com runtime Node + compilação TypeScript + ponto de entrada mínimo.
+
+### Decisão
+Iniciar com ponto de entrada TypeScript simples (`src/main.ts`) e scripts de ciclo básico (`dev`, `build`, `start`, `typecheck`), sem framework HTTP nesta sessão.
+
+### Justificativa
+Permite validar instalação, compilação e execução antes de incluir novas camadas.
+
+### Trade-offs
+- **Pró**: menor risco e melhor foco pedagógico na fundação.
+- **Contra**: ainda não entrega endpoint HTTP nesta etapa.
