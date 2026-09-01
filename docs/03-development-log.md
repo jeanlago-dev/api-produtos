@@ -95,9 +95,46 @@ Revisar o estado real após o merge da Fase 0, validar a configuração atual e 
 
 ---
 
+## Sessão 004 — Conclusão da Fase 0.2 com Express
+
+### Objetivo
+Concluir a Fase 0 com a camada web mínima em Express e uma rota de health check funcional.
+
+### Alterações
+- instalação de `express` e `@types/express`;
+- criação de `src/app.ts` para configuração da aplicação;
+- criação de `src/server.ts` para inicialização do listener HTTP;
+- atualização de `src/main.ts` para iniciar o servidor;
+- criação de `src/routes/health.routes.ts` com `GET /health`;
+- atualização de documentação arquitetural e decisões;
+- criação do guia da sessão em `docs/session-guides/00.2-express-healthcheck.md`.
+
+### Problemas encontrados
+- tentativa inicial de validação com processo em background falhou ao encerrar PID de forma inválida no shell.
+
+### Solução
+- validação da execução ajustada para fluxo com servidor em sessão assíncrona, teste com `curl` e encerramento controlado.
+
+### Decisões
+- separar `app` e `server` já nesta fase para manter responsabilidades claras sem introduzir camadas adicionais.
+
+### Testes
+- `npm run typecheck`;
+- `npm run build`;
+- `npm run start`;
+- `curl http://127.0.0.1:3000/health`;
+- `npm test`.
+
+### Commit
+- `chore: add express dependencies`
+- `feat: add express app with health route`
+- `docs: document phase 0.2 express implementation`
+
+---
+
 ## Próximas sessões sugeridas
 
-1. configuração inicial do Express;
-2. configuração PostgreSQL + TypeORM;
-3. criação das entidades iniciais e migrations;
-4. CRUD básico de produtos.
+1. configuração PostgreSQL + TypeORM;
+2. criação das entidades iniciais e migrations;
+3. CRUD básico de produtos;
+4. CRUD básico de categorias.

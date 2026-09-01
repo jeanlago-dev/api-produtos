@@ -1,5 +1,3 @@
-function bootstrap(): void {
-  console.log("API Produtos foundation initialized (Sessão 0.1).");
-}
+import { startServer } from "./server.js";
 
-bootstrap();
+startServer();
