@@ -1,88 +1,39 @@
-# 01 — Arquitetura inicial proposta
+# 01 — Arquitetura implementada (estado atual)
 
 ## Objetivo
-Definir uma arquitetura simples, didática e evolutiva para a API.
+Registrar a arquitetura realmente implementada até a conclusão da Fase 0.
 
-## Estilo arquitetural inicial
+## Estilo arquitetural atual
 
-Arquitetura em camadas com MVC simplificado:
+Estrutura mínima de aplicação web com Express:
 
-- **Routes**: mapeamento HTTP.
-- **Controllers**: recebem requisição e devolvem resposta.
-- **Services**: regras de negócio.
-- **Repositories/ORM**: acesso a dados com TypeORM.
-- **Entities**: modelo relacional mapeado para classes.
+- **App (`src/app.ts`)**: cria e configura a instância do Express e registra rotas;
+- **Server (`src/server.ts`)**: responsabilidade de inicializar o listener HTTP;
+- **Entry point (`src/main.ts`)**: inicia o servidor;
+- **Routes (`src/routes/`)**: definição das rotas HTTP da fase atual.
 
-Essa estrutura mantém separação suficiente sem excesso de abstrações.
+Essa separação mantém responsabilidades básicas claras sem introduzir camadas prematuras.
 
-## Estrutura de diretórios sugerida (fase inicial)
+## Estrutura de diretórios atual
 
 ```text
 src/
   app.ts
   server.ts
-  config/
-    data-source.ts
-  modules/
-    categories/
-      category.entity.ts
-      category.repository.ts
-      category.service.ts
-      category.controller.ts
-      category.routes.ts
-    products/
-      product.entity.ts
-      product.repository.ts
-      product.service.ts
-      product.controller.ts
-      product.routes.ts
-  shared/
-    errors/
-      app-error.ts
-      error-handler.middleware.ts
+  main.ts
+  routes/
+    health.routes.ts
 ```
 
-> Observação: essa estrutura pode começar menor e crescer por sessão.
+## Endpoint implementado na Fase 0
 
-## Modelo inicial do banco de dados
+- `GET /health` retorna status `200` com payload JSON de saúde da API.
 
-### Entidade: Category
+## Componentes ainda não implementados
 
-Campos iniciais:
-- `id` (PK, uuid ou serial)
-- `name` (texto, único)
-- `description` (texto opcional)
-- `created_at` (timestamp)
-- `updated_at` (timestamp)
-
-### Entidade: Product
-
-Campos iniciais:
-- `id` (PK, uuid ou serial)
-- `name` (texto)
-- `description` (texto)
-- `price` (decimal numérico positivo)
-- `stock` (inteiro >= 0)
-- `brand` (texto)
-- `category_id` (FK para `categories.id`)
-- `created_at` (timestamp)
-- `updated_at` (timestamp)
-
-### Relacionamento inicial
-
-- `Category (1) -> (N) Product`
-
-## Regras iniciais de domínio (mínimas)
-
-- produto deve pertencer a uma categoria existente;
-- `price` deve ser maior que zero;
-- `stock` não pode ser negativo;
-- nome de categoria deve ser único.
-
-## Componentes que ficam para etapas futuras
-
-- autenticação/JWT;
-- RBAC;
-- pedidos e itens de pedido;
-- testes automatizados completos;
-- Docker e CI/CD.
+- persistência com PostgreSQL/TypeORM;
+- entidades e regras de domínio (`Category`/`Product`);
+- camadas de controller/service/repository;
+- autenticação e autorização;
+- documentação Swagger;
+- observabilidade avançada e testes automatizados.

@@ -2,20 +2,16 @@
 
 API REST educacional para produtos de tecnologia, evoluída por fases.
 
-## Estado atual (auditoria da Fase 0)
+## Estado atual (Fase 0 concluída)
 
-A fundação inicial da Fase 0 está **parcialmente concluída**:
+A base inicial da Fase 0 está concluída:
 
 - projeto Node.js + TypeScript inicializado;
 - scripts npm básicos configurados;
 - compilação TypeScript funcionando;
-- ponto de entrada mínimo em `src/main.ts` funcionando.
-
-Ainda **não** foram implementados nesta fase:
-
 - servidor HTTP com Express;
-- rota de saúde;
-- estrutura completa `app/server` prevista para a Fase 0.
+- separação inicial entre `app` e `server`;
+- rota de saúde em `GET /health`.
 
 ## Scripts
 
@@ -36,10 +32,16 @@ npm run start
 npm test
 ```
 
-Saída esperada de `npm run start`:
+Após iniciar a aplicação com `npm run start`, teste:
+
+```bash
+curl http://127.0.0.1:3000/health
+```
+
+Resposta esperada:
 
 ```text
-API Produtos foundation initialized (Sessão 0.1).
+{"status":"ok","message":"API Produtos is running"}
 ```
 
 ## Documentação
@@ -47,3 +49,4 @@ API Produtos foundation initialized (Sessão 0.1).
 - `/home/runner/work/api-produtos/api-produtos/docs/00-project-roadmap.md`
 - `/home/runner/work/api-produtos/api-produtos/docs/03-development-log.md`
 - `/home/runner/work/api-produtos/api-produtos/docs/session-guides/00.1-inicializacao-node-typescript.md`
+- `/home/runner/work/api-produtos/api-produtos/docs/session-guides/00.2-express-healthcheck.md`

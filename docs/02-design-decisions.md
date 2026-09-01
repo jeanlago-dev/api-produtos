@@ -97,3 +97,27 @@ Permite validar instalação, compilação e execução antes de incluir novas c
 ### Trade-offs
 - **Pró**: menor risco e melhor foco pedagógico na fundação.
 - **Contra**: ainda não entrega endpoint HTTP nesta etapa.
+
+---
+
+## ADR-005 — Separar `app` e `server` ao introduzir Express
+
+### Contexto
+A Fase 0.2 adiciona o primeiro servidor HTTP da API com Express.
+
+### Problema
+Misturar configuração da aplicação com inicialização do listener HTTP dificulta evolução e testes de integração futuros.
+
+### Alternativas consideradas
+- manter tudo no ponto de entrada (`main.ts`);
+- separar configuração da aplicação (`app`) da inicialização do servidor (`server`).
+
+### Decisão
+Separar `src/app.ts` (configuração do Express e rotas) de `src/server.ts` (startup HTTP), mantendo `src/main.ts` apenas como ponto de inicialização.
+
+### Justificativa
+Preserva simplicidade nesta fase e prepara a base para crescimento incremental sem acoplamento desnecessário.
+
+### Trade-offs
+- **Pró**: responsabilidades mais claras e estrutura pronta para expansão.
+- **Contra**: aumenta em poucos arquivos a estrutura inicial.
