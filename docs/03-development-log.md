@@ -61,6 +61,40 @@ Criar a fundação mínima do projeto com Node.js e TypeScript, sem ainda inclui
 
 ---
 
+## Sessão 003 — Auditoria da Fase 0
+
+### Objetivo
+Revisar o estado real após o merge da Fase 0, validar a configuração atual e alinhar a documentação com o que está efetivamente implementado.
+
+### Alterações
+- atualização do `README.md` para UTF-8 e conteúdo alinhado ao estado atual do projeto;
+- registro explícito de que a Fase 0 está parcialmente concluída.
+
+### Verificações executadas
+- `npm ci`;
+- `npm run typecheck`;
+- `npm run build`;
+- `npm run start`;
+- `npm test`;
+- `npm run clean` + rebuild.
+
+### Resultado da auditoria
+- fundação Node.js + TypeScript está funcional;
+- scripts da base estão operacionais;
+- Express e rota de saúde ainda não foram implementados;
+- Fase 0 permanece parcial (0.1 concluída, 0 completa pendente).
+
+### Problemas encontrados
+- `README.md` estava com codificação UTF-16/CRLF e conteúdo mínimo, causando inconsistência documental.
+
+### Decisões
+- corrigir apenas documentação, sem avançar para Fase 1 e sem implementar novas funcionalidades.
+
+### Commit
+- `docs: align phase 0 documentation with current status`
+
+---
+
 ## Próximas sessões sugeridas
 
 1. configuração inicial do Express;
